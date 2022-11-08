@@ -9,7 +9,7 @@ var employees = [
     PhoneNumber: 9876543210,
     email: "abc@gmail.com",
     SkypeID: 3421783,
-    office: "seattle",
+    office: "Seattle",
     src1: "../assets/card-end.jpg",
   },
   {
@@ -22,7 +22,7 @@ var employees = [
     PhoneNumber: 9876543210,
     SkypeID: 3421783,
     email: "abc@gmail.com",
-    office: "seattle",
+    office: "Seattle",
     src1: "../assets/card-end.jpg",
   },
   {
@@ -110,7 +110,8 @@ if (localStorage.getItem("employees") == null) {
 }
 
 let employees_local = JSON.parse(localStorage.getItem("employees"));
-let cards = JSON.parse(localStorage.getItem("employees")).map((card) => {
+let cards = JSON.parse(localStorage.getItem("employees"))
+  .map((card) => {
     return `<div class="card">      
     <img class="card-img" src= ${card.src}>
     <div class="card-content">
@@ -150,9 +151,15 @@ if (localStorage.getItem("departments_local") == null) {
 }
 
 let departments_local = JSON.parse(localStorage.getItem("departments_local"));
-var dep_all = departments_local.map((department) => {
+var dep_all = departments_local
+  .map((department) => {
     return (
-      '<li class="dep-name">' + department.department + "(" + department.num + ")" + "</li>"
+      '<li class="dep-name">' +
+      department.department +
+      "(" +
+      department.num +
+      ")" +
+      "</li>"
     );
   })
   .join(" ");
@@ -180,18 +187,18 @@ var jobs = [
     job: "Lead Engineer Dot Net",
     num: 1,
   },
-  // {
-  //     "job": "Network Engineer",
-  //     "num": 1
-  // },
-  // {
-  //     "job": "UI Designer",
-  //     "num": 1
-  // },
-  // {
-  //     "job": "Software Engineer",
-  //     "num": 1
-  // }
+  {
+    job: "Network Engineer",
+    num: 1,
+  },
+  {
+    job: "UI Designer",
+    num: 1,
+  },
+  {
+    job: "Software Engineer",
+    num: 1,
+  },
 ];
 
 if (localStorage.getItem("jobs") == null) {
@@ -203,17 +210,49 @@ let job_all = JSON.parse(localStorage.getItem("jobs"))
     return '<li class="job-name">' + job.job + "(" + job.num + ")</li>";
   })
   .join(" ");
-job_all += '<li><a href="#" class="text-blue text-smaller">view more</a></li>';
-
+job_all += '<li class="text-blue text smaller" id="expand">view more</li>';
+job_all += '<li class="text-blue text smaller" id="compress">view less</li>';
 document.getElementsByClassName("ternary-list")[0].innerHTML += job_all;
+document.getElementById("compress").style.display = "none";
+let doc_jobs = document.getElementsByClassName("job-name");
+for (let h = 4; h < 8; h++) {
+  doc_jobs[h].style.display = "none";
+}
+
+document.getElementById("expand").addEventListener("click", () => {
+  for (let h = 4; h < 8; h++) {
+    doc_jobs[h].style.display = "block";
+  }
+  document.getElementById("compress").style.display = "block";
+  document.getElementById("expand").style.display = "none";
+});
+
+document.getElementById("compress").addEventListener("click", () => {
+  for (let h = 4; h < 8; h++) {
+    doc_jobs[h].style.display = "none";
+  }
+  document.getElementById("compress").style.display = "none";
+  document.getElementById("expand").style.display = "block";
+});
 
 //Filter through alphabets
-let alpha = document.querySelectorAll(".alpha");
+let alphas = document.querySelectorAll(".alpha");
 
-var alphabets = alpha.forEach(function (alpha) {
+var alphabets = alphas.forEach(function (alpha) {
   alpha.addEventListener("click", () => {
     val = alpha.textContent.toLowerCase();
-
+    jobs_all.forEach(function (job) {
+      job.style.borderLeft = "none";
+      job.style.fontSize = "1vw";
+    });
+    depart_all.forEach(function (department) {
+      department.style.borderLeft = "none";
+      department.style.fontSize = "1vw";
+    });
+    alphas.forEach(function (alpha) {
+      alpha.style.border = "none";
+    });
+    alpha.style.border = "3px solid #061e3f";
     filteredcards = employees_local.filter(function (card) {
       return (
         card.FirstName.toLowerCase().startsWith(val) ||
@@ -252,7 +291,8 @@ search.addEventListener("keyup", function (employe) {
     );
   });
 
-  var filtered_employees = filteredcards.map((card) => {
+  var filtered_employees = filteredcards
+    .map((card) => {
       return `<div class="card">      
         <img class="card-img" src= ${card.src}>
         <div class="card-content">
@@ -298,12 +338,13 @@ drop.addEventListener("change", function (drop) {
       .join(" ");
 
     document.querySelector(".fourth-section").innerHTML = filtered_employees;
-  } 
-  else if (drop.target.value == "Department") {
+  } else if (drop.target.value == "Department") {
     var filteredcards = employees_local.sort((a, b) =>
-      a.Department < b.Department ? -1 : 1);
+      a.Department < b.Department ? -1 : 1
+    );
 
-    var filtered_employees = filteredcards.map((card) => {
+    var filtered_employees = filteredcards
+      .map((card) => {
         return `<div class="card">      
           <img class="card-img" src= ${card.src}>
           <div class="card-content">
@@ -319,9 +360,11 @@ drop.addEventListener("change", function (drop) {
     document.querySelector(".fourth-section").innerHTML = filtered_employees;
   } else if (drop.target.value == "Job Title") {
     var filteredcards = employees_local.sort((a, b) =>
-      a.JobTitle < b.JobTitle ? -1 : 1);
+      a.JobTitle < b.JobTitle ? -1 : 1
+    );
 
-    var filtered_employees = filteredcards.map((card) => {
+    var filtered_employees = filteredcards
+      .map((card) => {
         return `<div class="card">      
           <img class="card-img" src= ${card.src}>
           <div class="card-content">
@@ -344,11 +387,24 @@ var depart_all = document.querySelectorAll(".dep-name");
 depart_all.forEach(function (department) {
   department.addEventListener("click", () => {
     let value = department.textContent.toLowerCase().split("(")[0];
-
+    alphas.forEach(function (alpha) {
+      alpha.style.border = "none";
+    });
+    jobs_all.forEach(function (job) {
+      job.style.borderLeft = "none";
+      job.style.fontSize = "1vw";
+    });
+    depart_all.forEach(function (department) {
+      department.style.borderLeft = "none";
+      department.style.fontSize = "1vw";
+    });
+    department.style.borderLeft = "2.5px solid black";
+    department.style.fontSize = "1.1vw";
     filteredcards = employees_local.filter(function (card) {
       return card.Department.toLowerCase().startsWith(value);
     });
-    var filtered_employees = filteredcards.map((card) => {
+    var filtered_employees = filteredcards
+      .map((card) => {
         return `<div class="card">      
               <img class="card-img" src= ${card.src}>
               <div class="card-content">
@@ -358,8 +414,10 @@ depart_all.forEach(function (department) {
                 <img src=${card.src1} alt="card-end" class="end-img">
               </div>
            </div>`;
-      }).join(" ");
-    document.getElementsByClassName("fourth-section")[0].innerHTML = filtered_employees;
+      })
+      .join(" ");
+    document.getElementsByClassName("fourth-section")[0].innerHTML =
+      filtered_employees;
   });
 });
 
@@ -369,7 +427,19 @@ var jobs_all = document.querySelectorAll(".job-name");
 jobs_all.forEach(function (job) {
   job.addEventListener("click", () => {
     let value = job.textContent.toLowerCase().split("(")[0];
-
+    alphas.forEach(function (alpha) {
+      alpha.style.border = "none";
+    });
+    depart_all.forEach(function (department) {
+      department.style.borderLeft = "none";
+      department.style.fontSize = "1vw";
+    });
+    jobs_all.forEach(function (job) {
+      job.style.borderLeft = "none";
+      job.style.fontSize = "1vw";
+    });
+    job.style.borderLeft = "2.5px solid black";
+    job.style.fontSize = "1.1vw";
     filteredcards = employees_local.filter(function (card) {
       return card.JobTitle.toLowerCase().startsWith(value);
     });
@@ -391,7 +461,7 @@ jobs_all.forEach(function (job) {
   });
 });
 
-var input = document.getElementsByTagName("input");
+var input = document.querySelectorAll(".input");
 let open = document.getElementById("open");
 open.addEventListener("click", () => {
   document.getElementById("container").style.display = "block";
@@ -412,8 +482,8 @@ close.addEventListener("click", () => {
   document.getElementById("container").style.display = "none";
 });
 
-let all_card = JSON.parse(localStorage.getItem('employees'));
-let card_all=document.querySelectorAll('.card');
+let all_card = JSON.parse(localStorage.getItem("employees"));
+let card_all = document.querySelectorAll(".card");
 var j;
 for (let i = 0; i < all_card.length; i++) {
   card_all[i].addEventListener("click", () => {
@@ -432,8 +502,8 @@ for (let i = 0; i < all_card.length; i++) {
     input[6].value = all_card[i].Department;
     input[7].value = all_card[i].PhoneNumber;
     input[8].value = all_card[i].SkypeID;
-    localStorage.removeItem('employees');
-    localStorage.setItem('employees',JSON.stringify(all_card));
+    localStorage.removeItem("employees");
+    localStorage.setItem("employees", JSON.stringify(all_card));
   });
 }
 
@@ -536,4 +606,4 @@ add.addEventListener("click", () => {
     localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 });
-// localStorage.clear();
+localStorage.clear();

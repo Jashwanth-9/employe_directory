@@ -113,11 +113,11 @@ a {
 .line1 {
     margin-top: 1vh;
 }
-input {
+.input {
     width: 16vw;
     font-size: 1vw;
 }
-td input {
+td .input {
     font-size: 1.5vw;
 }
 .button-green {
@@ -131,7 +131,7 @@ td input {
     justify-content: space-evenly;
     margin-left: 3vw;
 }
-select {
+#dropdown {
     width: 10vw;
     background-color: white;
 }
