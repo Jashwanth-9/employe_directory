@@ -1,117 +1,49 @@
+function employee(ar){
+  var employ_main = {
+    src: "",
+    FirstName: "",
+    LastName: "",
+    JobTitle: "",
+    PreferredName: "",
+    Department: "",
+    PhoneNumber: 1,
+    email: "",
+    SkypeID: 1,
+    office: "",
+    src1: "../assets/card-end.jpg",
+}
+
+  employ_main.src=ar[0];
+  employ_main.FirstName=ar[1];
+  employ_main.LastName=ar[2];
+  employ_main.JobTitle=ar[3];
+  employ_main.PreferredName=ar[4];
+  employ_main.Department=ar[5];
+  employ_main.PhoneNumber=ar[6];
+  employ_main.email=ar[7];
+  employ_main.SkypeID=ar[8];
+  employ_main.office=ar[9];
+  
+  return employ_main;
+};
+
 var employees = [
-  {
-    src: "../assets/img-1.jpg",
-    FirstName: "Antony ",
-    LastName: "Morris",
-    JobTitle: "SharePoint Practice Head",
-    PreferredName: "Antony",
-    Department: "IT Department",
-    PhoneNumber: 9876543210,
-    email: "abc@gmail.com",
-    SkypeID: 3421783,
-    office: "Seattle",
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-2.jpg",
-    FirstName: "Helen ",
-    LastName: "Zipperman",
-    JobTitle: "Operations Manager",
-    PreferredName: "Helen",
-    Department: "IT Department",
-    PhoneNumber: 9876543210,
-    SkypeID: 3421783,
-    email: "abc@gmail.com",
-    office: "Seattle",
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-3.jpg",
-    FirstName: "Jonathan ",
-    LastName: "Smith",
-    JobTitle: "Product Manager",
-    PreferredName: "Jonathan",
-    Department: "IT Department",
-    PhoneNumber: 9876543210,
-    email: "abc@gmail.com",
-    office: "India",
-    SkypeID: 3421783,
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-4.jpg",
-    FirstName: "Angela ",
-    LastName: "Bailey",
-    JobTitle: "Talent Magnet Jr.",
-    PreferredName: "Angela",
-    Department: "HR Department",
-    PhoneNumber: 9876543210,
-    SkypeID: 3421783,
-    email: "abc@gmail.com",
-    office: "India",
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-5.jpg",
-    FirstName: "Tami ",
-    LastName: "Hopkins",
-    JobTitle: "Lead Engineer Dot Net",
-    PreferredName: "Tami",
-    Department: "IT Department",
-    PhoneNumber: 9876543210,
-    SkypeID: 3421783,
-    email: "abc@gmail.com",
-    office: "India",
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-6.jpg",
-    FirstName: "Franklin ",
-    LastName: "Humark",
-    JobTitle: "Network Engineer",
-    PreferredName: "Franklin",
-    Department: "IT Department",
-    PhoneNumber: 9876543210,
-    SkypeID: 3421783,
-    email: "abc@gmail.com",
-    office: "India",
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-7.jpg",
-    FirstName: "Olivia ",
-    LastName: "Watson",
-    JobTitle: "UI Designer",
-    PreferredName: "Olivia",
-    Department: "UX Department",
-    PhoneNumber: 9876543210,
-    SkypeID: 3421783,
-    email: "abc@gmail.com",
-    office: "Seattle",
-    src1: "../assets/card-end.jpg",
-  },
-  {
-    src: "../assets/img-8.jpg",
-    FirstName: "Robert ",
-    LastName: "Mitchell",
-    JobTitle: "Software Engineer",
-    PreferredName: "Robert",
-    Department: "IT Department",
-    PhoneNumber: 9876543210,
-    SkypeID: 3421783,
-    email: "abc@gmail.com",
-    office: "Seattle",
-    src1: "../assets/card-end.jpg",
-  },
+  employee(["../assets/img-1.jpg","Antony ","Morris","SharePoint Practice Head","Antony","IT Department",9876543210,"abc@gmail.com",3421783,"Seattle"]),
+  employee(["../assets/img-2.jpg","Helen ","Zipperman","Operations Manager","Helen","IT Department",9876543210,"abc@gmail.com",3421783,"Seattle"]),
+  employee(["../assets/img-3.jpg","Jonathan ","Smith","Product Manager","Jonathan","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["../assets/img-4.jpg","Angela ","Bailey","Talent Manager Jr.","Angela","HR Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["../assets/img-5.jpg","Tami ","Hopkins","Lead Engineer Dot Net","Tami","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["../assets/img-6.jpg","Franklin ","Humark","Network Engineer","Franklin","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["../assets/img-7.jpg","Olivia ","Watson","UI Designer","Olivia","UX Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["../assets/img-8.jpg","Robert ","Mitchell","Software Engineer","Robert","IT Department",9876543210,"abc@gmail.com",3421783,"India"])
 ];
 
 if (localStorage.getItem("employees") == null) {
   localStorage.setItem("employees", JSON.stringify(employees));
 }
 
-let employees_local = JSON.parse(localStorage.getItem("employees"));
-let cards = JSON.parse(localStorage.getItem("employees"))
-  .map((card) => {
+function each_card (cards){
+  let all=cards.map((card) => {
     return `<div class="card">      
     <img class="card-img" src= ${card.src}>
     <div class="card-content">
@@ -121,29 +53,34 @@ let cards = JSON.parse(localStorage.getItem("employees"))
       <img src=${card.src1} alt="card-end" class="end-img">
     </div>
  </div>`;
-  })
-  .join(" ");
+  }).join(" ");
+  return all;
+}
+
+let employees_local = JSON.parse(localStorage.getItem("employees"));
+let cards = each_card(JSON.parse(localStorage.getItem("employees")));
 
 let employeecards = document.getElementsByClassName("fourth-section")[0];
 employeecards.innerHTML = cards;
 
+function depart(ar) {
+  let new_department = {
+    department:"",
+    num: 1,
+  };
+
+  new_department.department=ar[0];
+  new_department.num=ar[1];
+
+  return new_department;
+
+};
+
 var departments = [
-  {
-    department: "IT",
-    num: 6,
-  },
-  {
-    department: "Human Resources",
-    num: 1,
-  },
-  {
-    department: "UX",
-    num: 1,
-  },
-  {
-    department: "Sales",
-    num: 1,
-  },
+  depart(["IT",6]),
+  depart(["Human Resources",1]),
+  depart(["UX",1]),
+  depart(["Sales",1])
 ];
 
 if (localStorage.getItem("departments_local") == null) {
@@ -166,39 +103,28 @@ var dep_all = departments_local
 
 document.getElementsByClassName("primary-list")[0].innerHTML += dep_all;
 
+function new_job(ar) {
+  let job = {
+    job: "",
+    num: 1
+  };
+
+  job.job=ar[0];
+  job.num=ar[1];
+
+  return job;
+
+}
+
 var jobs = [
-  {
-    job: "SharePoint Practice Head",
-    num: 1,
-  },
-  {
-    job: "Operations Manager",
-    num: 1,
-  },
-  {
-    job: "Product Manager",
-    num: 1,
-  },
-  {
-    job: "Talent Magnet Jr.",
-    num: 1,
-  },
-  {
-    job: "Lead Engineer Dot Net",
-    num: 1,
-  },
-  {
-    job: "Network Engineer",
-    num: 1,
-  },
-  {
-    job: "UI Designer",
-    num: 1,
-  },
-  {
-    job: "Software Engineer",
-    num: 1,
-  },
+  new_job(["SharePoint Practice Head",1]),
+  new_job(["Operations Manager",1]),
+  new_job(["Product Manager",1]),
+  new_job(["Talent Manager Jr.",1]),
+  new_job(["Lead Engineer Dot Net",1]),
+  new_job(["Network Engineer",1]),
+  new_job(["UI Designer",1]),
+  new_job(["Software Engineer",1])
 ];
 
 if (localStorage.getItem("jobs") == null) {
@@ -216,7 +142,9 @@ document.getElementsByClassName("ternary-list")[0].innerHTML += job_all;
 document.getElementById("compress").style.display = "none";
 let doc_jobs = document.getElementsByClassName("job-name");
 for (let h = 4; h < 8; h++) {
+  if(doc_jobs[h]){
   doc_jobs[h].style.display = "none";
+  }
 }
 
 document.getElementById("expand").addEventListener("click", () => {
@@ -260,20 +188,7 @@ var alphabets = alphas.forEach(function (alpha) {
       );
     });
 
-    var filtered_employees = filteredcards
-      .map((card) => {
-        return `<div class="card">
-              <img class="card-img" src= ${card.src}>
-              <div class="card-content">
-                <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-                <p class="text-smaller">${card.JobTitle}</p>
-                <p class="text-smaller">${card.Department}</p>
-                <img src=${card.src1} alt="card-end" class="end-img">
-              </div>
-           </div>`;
-      })
-      .join(" ");
-
+    var filtered_employees = each_card(filteredcards);
     document.querySelector(".fourth-section").innerHTML = filtered_employees;
   });
 });
@@ -291,20 +206,7 @@ search.addEventListener("keyup", function (employe) {
     );
   });
 
-  var filtered_employees = filteredcards
-    .map((card) => {
-      return `<div class="card">      
-        <img class="card-img" src= ${card.src}>
-        <div class="card-content">
-          <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-          <p class="text-smaller">${card.JobTitle}</p>
-          <p class="text-smaller">${card.Department}</p>
-          <img src=${card.src1} alt="card-end" class="end-img">
-        </div>
-     </div>`;
-    })
-    .join(" ");
-
+  var filtered_employees = each_card(filteredcards);
   document.querySelector(".fourth-section").innerHTML = filtered_employees;
 });
 
@@ -323,60 +225,21 @@ drop.addEventListener("change", function (drop) {
       a.PreferredName < b.PreferredName ? -1 : 1
     );
 
-    var filtered_employees = filteredcards
-      .map((card) => {
-        return `<div class="card">
-          <img class="card-img" src= ${card.src}>
-          <div class="card-content">
-            <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-            <p class="text-smaller">${card.JobTitle}</p>
-            <p class="text-smaller">${card.Department}</p>
-            <img src=${card.src1} alt="card-end" class="end-img">
-          </div>
-       </div>`;
-      })
-      .join(" ");
-
+    var filtered_employees = each_card(filteredcards);
     document.querySelector(".fourth-section").innerHTML = filtered_employees;
   } else if (drop.target.value == "Department") {
     var filteredcards = employees_local.sort((a, b) =>
       a.Department < b.Department ? -1 : 1
     );
 
-    var filtered_employees = filteredcards
-      .map((card) => {
-        return `<div class="card">      
-          <img class="card-img" src= ${card.src}>
-          <div class="card-content">
-            <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-            <p class="text-smaller">${card.JobTitle}</p>
-            <p class="text-smaller">${card.Department}</p>
-            <img src=${card.src1} alt="card-end" class="end-img">
-          </div>
-       </div>`;
-      })
-      .join(" ");
-
+    var filtered_employees = each_card(filteredcards);
     document.querySelector(".fourth-section").innerHTML = filtered_employees;
   } else if (drop.target.value == "Job Title") {
     var filteredcards = employees_local.sort((a, b) =>
       a.JobTitle < b.JobTitle ? -1 : 1
     );
 
-    var filtered_employees = filteredcards
-      .map((card) => {
-        return `<div class="card">      
-          <img class="card-img" src= ${card.src}>
-          <div class="card-content">
-            <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-            <p class="text-smaller">${card.JobTitle}</p>
-            <p class="text-smaller">${card.Department}</p>
-            <img src=${card.src1} alt="card-end" class="end-img">
-          </div>
-       </div>`;
-      })
-      .join(" ");
-
+    var filtered_employees = each_card(filteredcards);
     document.querySelector(".fourth-section").innerHTML = filtered_employees;
   }
 });
@@ -403,21 +266,8 @@ depart_all.forEach(function (department) {
     filteredcards = employees_local.filter(function (card) {
       return card.Department.toLowerCase().startsWith(value);
     });
-    var filtered_employees = filteredcards
-      .map((card) => {
-        return `<div class="card">      
-              <img class="card-img" src= ${card.src}>
-              <div class="card-content">
-                <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-                <p class="text-smaller">${card.JobTitle}</p>
-                <p class="text-smaller">${card.Department}</p>
-                <img src=${card.src1} alt="card-end" class="end-img">
-              </div>
-           </div>`;
-      })
-      .join(" ");
-    document.getElementsByClassName("fourth-section")[0].innerHTML =
-      filtered_employees;
+    var filtered_employees = each_card(filteredcards);
+    document.getElementsByClassName("fourth-section")[0].innerHTML = filtered_employees;
   });
 });
 
@@ -443,21 +293,8 @@ jobs_all.forEach(function (job) {
     filteredcards = employees_local.filter(function (card) {
       return card.JobTitle.toLowerCase().startsWith(value);
     });
-    var filtered_employees = filteredcards
-      .map((card) => {
-        return `<div class="card">      
-              <img class="card-img" src= ${card.src}>
-              <div class="card-content">
-                <p class="text-small text-bold">${card.FirstName}${card.LastName}</p>
-                <p class="text-smaller">${card.JobTitle}</p>
-                <p class="text-smaller">${card.Department}</p>
-                <img src=${card.src1} alt="card-end" class="end-img">
-              </div>
-           </div>`;
-      })
-      .join(" ");
-    document.getElementsByClassName("fourth-section")[0].innerHTML =
-      filtered_employees;
+    var filtered_employees = each_card(filteredcards);
+    document.getElementsByClassName("fourth-section")[0].innerHTML = filtered_employees;
   });
 });
 
@@ -534,20 +371,6 @@ save.addEventListener("click", () => {
   }
 });
 
-let new_employee = {
-  src: "../assets/img-5.jpg",
-  FirstName: "Tami",
-  LastName: "Hopkins",
-  JobTitle: "Lead Engineer Dot Net",
-  PreferredName: "Tami",
-  Department: "IT Department",
-  PhoneNumber: 9876543210,
-  SkypeID: 3421783,
-  email: "abc@gmail.com",
-  office: "India",
-  src1: "../assets/card-end.jpg",
-};
-
 let add = document.querySelector("#add");
 add.addEventListener("click", () => {
   if (
@@ -562,14 +385,7 @@ add.addEventListener("click", () => {
   ) {
     alert("Fill all the details");
   } else {
-    new_employee.FirstName = input[1].value + " ";
-    new_employee.LastName = input[2].value;
-    new_employee.email = input[3].value;
-    new_employee.JobTitle = input[4].value;
-    new_employee.office = input[5].value;
-    new_employee.Department = input[6].value;
-    new_employee.PhoneNumber = input[7].value;
-    new_employee.SkypeID = input[8].value;
+    let new_employee=employee(["../assets/img-5.jpg",input[1].value+" ",input[2].value,input[4].value,input[1].value,input[6].value,input[7].value,input[8].value,input[3].value,input[5].value]);
     let employee_array = JSON.parse(localStorage.getItem("employees"));
     employee_array.push(new_employee);
     localStorage.removeItem("employees");
@@ -606,4 +422,4 @@ add.addEventListener("click", () => {
     localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 });
-localStorage.clear();
+// localStorage.clear();
