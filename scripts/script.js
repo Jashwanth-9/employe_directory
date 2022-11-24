@@ -10,7 +10,7 @@ function employee(ar){
     email: "",
     SkypeID: 1,
     office: "",
-    src1: "../assets/card-end.jpg",
+    src1: "assets/card-end.jpg",
 }
 
   employ_main.src=ar[0];
@@ -28,14 +28,14 @@ function employee(ar){
 };
 
 var employees = [
-  employee(["../assets/img-1.jpg","Antony ","Morris","SharePoint Practice Head","Antony","IT Department",9876543210,"abc@gmail.com",3421783,"Seattle"]),
-  employee(["../assets/img-2.jpg","Helen ","Zipperman","Operations Manager","Helen","IT Department",9876543210,"abc@gmail.com",3421783,"Seattle"]),
-  employee(["../assets/img-3.jpg","Jonathan ","Smith","Product Manager","Jonathan","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
-  employee(["../assets/img-4.jpg","Angela ","Bailey","Talent Manager Jr.","Angela","HR Department",9876543210,"abc@gmail.com",3421783,"India"]),
-  employee(["../assets/img-5.jpg","Tami ","Hopkins","Lead Engineer Dot Net","Tami","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
-  employee(["../assets/img-6.jpg","Franklin ","Humark","Network Engineer","Franklin","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
-  employee(["../assets/img-7.jpg","Olivia ","Watson","UI Designer","Olivia","UX Department",9876543210,"abc@gmail.com",3421783,"India"]),
-  employee(["../assets/img-8.jpg","Robert ","Mitchell","Software Engineer","Robert","IT Department",9876543210,"abc@gmail.com",3421783,"India"])
+  employee(["assets/img-1.jpg","Antony ","Morris","SharePoint Practice Head","Antony","IT Department",9876543210,"abc@gmail.com",3421783,"Seattle"]),
+  employee(["assets/img-2.jpg","Helen ","Zipperman","Operations Manager","Helen","IT Department",9876543210,"abc@gmail.com",3421783,"Seattle"]),
+  employee(["assets/img-3.jpg","Jonathan ","Smith","Product Manager","Jonathan","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["assets/img-4.jpg","Angela ","Bailey","Talent Manager Jr.","Angela","HR Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["assets/img-5.jpg","Tami ","Hopkins","Lead Engineer Dot Net","Tami","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["assets/img-6.jpg","Franklin ","Humark","Network Engineer","Franklin","IT Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["assets/img-7.jpg","Olivia ","Watson","UI Designer","Olivia","UX Department",9876543210,"abc@gmail.com",3421783,"India"]),
+  employee(["assets/img-8.jpg","Robert ","Mitchell","Software Engineer","Robert","IT Department",9876543210,"abc@gmail.com",3421783,"India"])
 ];
 
 if (localStorage.getItem("employees") == null) {
