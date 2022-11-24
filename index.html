@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <img src="../assets/saketa.jpg" alt="Main-logo" class="logo left">
+            <div class="nav-title left">
+                <h1 class="text-large text-blue">Employee Directory</h1>
+                <p class="text-small">The Ultimate People Directory Experience.</p>
+            </div>
+            <img src="../assets/Andrew.jpg" alt="user-profile" class="nav-img right">
+            <div class="nav-right right">
+                <p class="text-blue text-medium left">Welcome,</p>
+                <p class="text-medium left"> Andrew Philips</p>
+            </div>
+        </div>
+        <hr>
+        </hr>
+    </header>
+    <main>
+        <div class="flex-container">
+            <div class="left-bar">
+                <ul class="primary-list">
+                    <h2 >Departments</h2>
+                </ul>
+                <ul class="secondary-list">
+                    <h2>Offices</h2>
+                    <li>Seattle (1)</li>
+                    <li>India (1)</li>
+                </ul>
+                <ul class="ternary-list">
+                    <h2>Job Titles</h2>
+                </ul>
+            </div>
+            <div class="primary-section">
+                <div class="alphabets">
+                    <p class="alpha"><img src="../assets/user.jpg" alt="" id="primary-img"></p>
+                    <p class="alpha">A</p>
+                    <p class="alpha">B</p>
+                    <p class="alpha">C</p>
+                    <p class="alpha">D</p>
+                    <p class="alpha">E</p>
+                    <p class="alpha">F</p>
+                    <p class="alpha">G</p>
+                    <p class="alpha">H</p>
+                    <p class="alpha">I</p>
+                    <p class="alpha">J</p>
+                    <p class="alpha">K</p>
+                    <p class="alpha">L</p>
+                    <p class="alpha">M</p>
+                    <p class="alpha">N</p>
+                    <p class="alpha">O</p>
+                    <p class="alpha">P</p>
+                    <p class="alpha">Q</p>
+                    <p class="alpha">R</p>
+                    <p class="alpha">S</p>
+                    <p class="alpha">T</p>
+                    <p class="alpha">U</p>
+                    <p class="alpha">V</p>
+                    <p class="alpha">W</p>
+                    <p class="alpha">X</p>
+                    <p class="alpha">Y</p>
+                    <p class="alpha">Z</p>
+                </div>
+                <div class="secondary-section">
+                    <div class="secondary-left">
+                        <p class="line1">Search</p>
+                        <input type="text" placeholder="Enter any keyword" id="search" class="input">
+                        <button class="button-green" id="clear">Clear</button>
+                    </div>
+                    <div class="secondary-drop">
+                        <p class="line1">Filter by</p>
+                        <select name="filter" id="drop-down" class="text-smaller">
+                            <option value="Preferred Name">Preferred Name</option>
+                            <option value="Department">Department</option>
+                            <option value="Job Title">Job Title</option>
+                        </select>
+                    </div>
+                    <div class="secondary-button">
+                        <button id="open" class="button-blue">Add Employee</button>
+                    </div>
+                    <div class="pop-up">
+                        <div id="container">
+                                <table>
+                                    <tr>
+                                        <td>First Name</td>
+                                        <td><input type="text" class="input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name</td>
+                                        <td><input type="text" class="input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><input type="email" class="input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Job Title</td>
+                                        <td><select name="Job" class="input">
+                                            <option value="SharePoint Practice Head">SharePoint Practice Head</option>
+                                            <option value="Operations Manager">Operations Manager</option>
+                                            <option value="Product Manager">Product Manager</option>
+                                            <option value="Talent Magnet Jr.">Talent Magnet Jr.</option>
+                                            <option value="Lead Engineer Dot Net">Lead Engineer Dot Net</option>
+                                            <option value="Network Engineer">Network Engineer</option>
+                                            <option value="UI Designer">UI Designer</option>
+                                            <option value="Software Engineer">Software Engineer</option>
+                                        </select></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office</td>
+                                        <td><select name="Office" class="input">
+                                            <option value="Seattle">Seattle</option>
+                                            <option value="India">India</option>
+                                        </select></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Department</td>
+                                        <td><select name="department" class="input">
+                                            <option value="IT Department">IT Department</option>
+                                            <option value="HR Department">HR Department</option>
+                                            <option value="UX Department">UX Department</option>
+                                            <option value="Sales Department">Sales Department</option>
+                                        </select></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number</td>
+                                        <td><input type="tel" class="input"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Skype ID</td>
+                                        <td><input type="text" class="input"></td>
+                                    </tr>
+                                </table>
+                                <div class="clicks">
+                                    <button id='save' class="button-blue">save</button>
+                                    <button id="close" class="button-blue">Submit</button>
+                                    <button id="add" class="button-blue">add</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ternary-section text-small">
+                        <p><b>Note: </b> Please use the advanced filter options to refine your results.</p>
+                </div>
+                <div class="fourth-outer">
+                    <div class="fourth-section">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../scripts/script.js"></script>
+</body>
+</html>
